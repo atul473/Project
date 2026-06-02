@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Digital Library</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Prevent white flash by forcing background color immediately */
+    body {
+      margin: 0;
+      background-color: #07080a; /* Deep Gemini Black */
+      color: #e3e3e3;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Optional: Styled pre-loader to make the app feel faster/premium */
+    #initial-loader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #07080a;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loader-dot {
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(70deg, #4b90ff, #8e59ff);
+      border-radius: 50%;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(0.5); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+<div id="initial-loader">
+  <div class="loader-dot"></div>
+</div>
+
+<div id="root"></div>
+
+<script type="module" src="/src/main.jsx"></script>
+
+<script>
+  // Remove loader once React has taken over
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('initial-loader');
+    if (loader) {
+      loader.style.opacity = '0';
+      setTimeout(() => loader.remove(), 500);
+    }
+  });
+</script>
+</body>
+</html>
